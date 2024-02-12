@@ -30,7 +30,7 @@ export default function Home() {
 
 export async function loader() {
 
-    const response = await fetch('http://localhost:1920/api/v1/product', {
+    const response = await fetch('http://localhost:1920/api/v1/product/', {
         method: 'GET'
     });
 

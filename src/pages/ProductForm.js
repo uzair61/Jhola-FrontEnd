@@ -1,4 +1,4 @@
-import { useActionData, useNavigate, useNavigation, json, redirect, Form } from "react-router-dom";
+import { useActionData, useNavigate, useNavigation, Form } from "react-router-dom";
 
 
 export default function ProductForm({ method , event}){
@@ -73,8 +73,8 @@ export default function ProductForm({ method , event}){
       
 }
 
-export async function action({ request , params}) {
-    const method = request.method;
+export async function action({ request}) {
+    
     const data = await request.formData();
 
     const productData = {
@@ -84,7 +84,7 @@ export async function action({ request , params}) {
         price: data.get('price'),
     }
 
-    const response = await fetch('http://localhost:1920/api/v1/product', {
+    const response = await fetch('http://localhost:1920/api/v1/product/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

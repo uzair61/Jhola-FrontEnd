@@ -18,33 +18,22 @@ export default function Category(){
 
 }
 
-export async function loader({ request , params}) {
-    const data = await request.formData();
+export async function loader({params}) {
+   
+    let category = params.category;
 
-    console.log(data);
-
-    const productData = {
-        name: data.get('name'),
-        category: data.get('category'),
-        description: data.get('description'),
-        price: data.get('price'),
-    }
-
-    let category = productData.category;
-
-    const response = await fetch('http://localhost:1920/api/v1/product/filter/:' + category, {
+    console.log(category);
+  
+    const response = await fetch('http://localhost:1920/api/v1/product/filter/' + category , {
         method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(productData)
+        
     });
 
     if (!response.ok) {
         console.log("Error Occurred")
         console.log(response)
     } else {
-        const resData = await response.text();
+        const resData = await response.json();
         return resData;
     }
 }

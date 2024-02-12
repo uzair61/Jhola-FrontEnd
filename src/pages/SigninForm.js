@@ -52,7 +52,7 @@ export default function SigninForm(event) {
 
 
 
-export async function action({ request, params }) {
+export async function action({ request }) {
     const data = await request.formData();
 
     const userData = {
